@@ -16,7 +16,8 @@ namespace LinhaDeProducao
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PaginaLogin());
+            Application.Run(new MenuLogin());
+            //Application.Run(new PaginaLogin());
             //Application.Run(new Menu());
         }
     }

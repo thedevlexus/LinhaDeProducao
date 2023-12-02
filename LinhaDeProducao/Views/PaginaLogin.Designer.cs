@@ -125,6 +125,7 @@
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.textBoxSenha);
             this.Controls.Add(this.textBoxEmail);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "PaginaLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PaginaLogin";

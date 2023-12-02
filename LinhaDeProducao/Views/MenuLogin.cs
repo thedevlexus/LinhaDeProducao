@@ -1,4 +1,5 @@
-﻿using Listas;
+﻿using LinhaDeProducao.Views;
+using Listas;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,36 @@ namespace LinhaDeProducao
         public MenuLogin()
         {
             InitializeComponent();
+
+   
+        }
+
+        public void AbrirForm<Forms>() where Forms : Form, new () 
+        {
+            Form formulario;
+
+            formulario = panelConteudo.Controls.OfType<Forms>().FirstOrDefault();
+
+            if (formulario == null)
+            {
+                formulario = new Forms();
+                formulario.TopLevel = false;
+                formulario.Dock = DockStyle.Fill;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                panelConteudo.Controls.Add(formulario);
+                panelConteudo.Tag = formulario;
+
+                formulario.Show();
+                formulario.BringToFront();
+            }
+            else 
+            {
+                if (formulario.WindowState == FormWindowState.Minimized)
+                {
+                    formulario.WindowState = FormWindowState.Normal;
+                }
+                formulario.BringToFront();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -28,6 +59,7 @@ namespace LinhaDeProducao
         private void button1_Click(object sender, EventArgs e)
         {
 
+            AbrirForm<PaginaClientes>();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -38,6 +70,7 @@ namespace LinhaDeProducao
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            AbrirForm<PaginaFuncionarios>();
 
         }
 
@@ -49,6 +82,11 @@ namespace LinhaDeProducao
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AbrirForm<PaginaProdutos>();
         }
     }
 }
