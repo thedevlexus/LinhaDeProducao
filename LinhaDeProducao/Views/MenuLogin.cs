@@ -13,9 +13,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LinhaDeProducao
 {
-    public partial class Form1 : Form
+    public partial class MenuLogin : Form
     {
-        public Form1()
+        public MenuLogin()
         {
             InitializeComponent();
         }
@@ -32,25 +32,7 @@ namespace LinhaDeProducao
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            try
-            {
-
-                Insumos insumos = new Insumos();
-
-
-                insumos.id_produto = 8;
-                insumos.nome = "1 Etapa - Lavar";
-                insumos.quantidade = 9;
-                insumos.unidade = "1";
-
-                insumos.Insert();  
-
-                MessageBox.Show("Add");
-            }
-            catch (Exception ex) 
-            {
-                throw new Exception(ex.Message);
-            }
+         
 
         }
 

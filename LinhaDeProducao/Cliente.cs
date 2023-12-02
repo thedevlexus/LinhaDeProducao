@@ -56,7 +56,7 @@ namespace Listas
                             novoCliente.nome = reader.GetString("nome");
                             novoCliente.telefone = reader.GetString("telefone");
                             novoCliente.email = reader.GetString("email");
-                            novoCliente.data_cadastro = DateTime.Parse("2023-11-18  14:19:00");
+                            novoCliente.data_cadastro = DateTime.Parse(reader.GetString("data_cadastro"));
 
                             novoCliente.SetDocumento(reader.GetString("documento"));
 

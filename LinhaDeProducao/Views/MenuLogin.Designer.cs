@@ -1,6 +1,6 @@
 ﻿namespace LinhaDeProducao
 {
-    partial class Form1
+    partial class MenuLogin
     {
         /// <summary>
         /// Variável de designer necessária.

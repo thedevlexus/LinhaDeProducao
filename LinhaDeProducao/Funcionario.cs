@@ -1,5 +1,6 @@
 ﻿using LinhaDeProducao;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Listas
         private string senha;
         public string email;
         private int nivel;
+        public bool logado = false;
         public DateTime data_cadastro;
 
         public void SetSenha(string senha)
@@ -81,6 +83,46 @@ namespace Listas
 
             return funcionarios;
         }
+
+        public Funcionario GetFuncionarioEmailESenha() 
+        {
+            Funcionario funcionarios = new Funcionario();
+            try
+            {
+                OpenConnection();
+
+                string query = "SELECT * FROM funcionarios WHERE email = '"+ this.email + "' AND senha = '"+ this.senha+ "';";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+
+                            this.id = Convert.ToInt32(reader.GetString("id"));
+                            this.nome = reader.GetString("nome");
+                            this.email = reader.GetString("email");
+                            this.nivel = Convert.ToInt32(reader.GetString("nivel")); 
+                            this.logado = true;
+                            
+
+                        }
+
+                    }
+
+                }
+
+                CloseConnection();
+            }
+            catch (Exception exception)
+            {
+                throw new Exception(exception.Message);
+            }
+
+            return funcionarios;  
+        }
+
         public bool Insert()
         {
 
